@@ -37,7 +37,7 @@ Plugin 'gregsexton/MatchTag'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'junkblocker/patchreview-vim'
+"Plugin 'junkblocker/patchreview-vim'
 " Plugin 'ervandew/supertab'
 " Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-abolish'
@@ -82,7 +82,7 @@ Plugin 'leafgarland/typescript-vim'
 " Plugin 'ianks/vim-tsx'
 Plugin 'styled-components/vim-styled-components'
 
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'sodapopcan/vim-twiggy'
 Plugin 'RRethy/vim-illuminate'
 Plugin 'sjl/vitality.vim'
@@ -522,10 +522,12 @@ command! Q q
 command! QQ tabo | q
 command! T tabo
 command! F Files
+command! Commits Extradite
+
+let g:extradite_resize=0
 
 nnoremap <C-k> :Gfetch <CR> :Gstatus<CR> :Twiggy<CR> <C-W> h
 nnoremap <S-K> :Gstatus<CR>
-
 
 " automatic esc, really uncommon to type jj,jk
 " inoremap jj <ESC>

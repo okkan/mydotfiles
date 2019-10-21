@@ -20,6 +20,12 @@ alias cmn="cmus-remote -n"
 alias cmp="cmus-remote -r"
 alias pp="cmus-remote -u"
 
+function killport(){
+    kill -9 `lsof -i TCP:$1 | awk '/LISTEN/{print $2}'`
+}
+
+
+
 #export JAVA_HOME=$(/usr/libexec/java_home)
 
 export PATH=$PATH:/Library/PostgreSQL/11/bin

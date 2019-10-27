@@ -711,3 +711,4 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+autocmd BufEnter *.png,*.jpg,*gif exec "! open -a Preview.app ".expand("%") | :bw

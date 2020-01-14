@@ -25,27 +25,23 @@ let maplocalleader=";"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/vim-ntautobookmark
+" set rtp+=~/.vim/bundle/vim-ntautobookmark/autoload
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer' }
-" Plugin 'zxqfl/tabnine-vim'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'gregsexton/MatchTag'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'junkblocker/patchreview-vim'
-" Plugin 'ervandew/supertab'
-" Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-abolish'
+" Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-signify'
 Plugin 'int3/vim-extradite'
-
 " css
 Plugin 'ap/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
@@ -72,17 +68,17 @@ Plugin 'prettier/vim-prettier', {
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'ternjs/tern_for_vim', { 'for': 'javascript' }
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plugin 'ternjs/tern_for_vim', { 'for': 'javascript' }
+Plugin 'junegunn/fzf', { 'dir': '~/.vim/bundle/fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 "Plugin 'jiangmiao/auto-pairs'
 Plugin 'tmsvg/pear-tree'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 " Plugin 'peitalin/vim-jsx-typescript'
 " Plugin 'ianks/vim-tsx'
 Plugin 'styled-components/vim-styled-components'
 
-Plugin 'dense-analysis/ale'
+" Plugin 'dense-analysis/ale'
 Plugin 'sodapopcan/vim-twiggy'
 Plugin 'RRethy/vim-illuminate'
 Plugin 'sjl/vitality.vim'
@@ -112,43 +108,47 @@ filetype plugin indent on   " enable detection, plugins and indent
 "autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 
+" FZF settings begins
+nnoremap <C-p> :Ag<CR>
 
 
-nnoremap <C-p> :Ag <CR>
-
-
+" This is the default extra key bindings
 let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
-      \ 'ctrl-v': 'vsplit' }
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10new' }
 
-
+" Customize fzf colors to match your color scheme
 let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'border':  ['fg', 'Ignore'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
-command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>,
-      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \                 <bang>0)
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+nmap <leader><tab> <plug>(fzf-maps-n)
 
-
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+" let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 ""let g:prettier#quickfix_enabled = 1
 
@@ -330,7 +330,7 @@ set pastetoggle=<leader>p       " paste mode: avoid auto indent, treat chars
 " -----------------------------------------------------------------------------
 
 " --- NERDTree ----
-let NERDTreeIgnore=['.DS_Store', '.idea', '.vscode']
+let NERDTreeIgnore=['.DS_Store', '.idea', '.vscode', 'node_modules']
 let NERDTreeShowBookmarks=0         "show bookmarks on startup
 let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
 let NERDTreeShowLineNumbers=0
@@ -464,31 +464,6 @@ let g:statline_mixed_indent_string = '[mix]'
 
 set splitbelow splitright   " how to split new windows.
 
-
-
-" --- toggle indentation mode ---
-
-function! ToggleExpandTab()
-  if &et
-    set noet softtabstop=0
-  else
-    execute "set et softtabstop=". &tabstop
-  endif
-endfunction
-
-noremap <silent> <leader>et :call ToggleExpandTab()<CR>
-
-
-" --- Show syntax highlighting groups for word under cursor ---
-" http://vimcasts.org/episodes/creating-colorschemes-for-vim/
-nnoremap <leader>sh :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 " faster wehn opening files with large lines
 set synmaxcol=120
 
@@ -496,7 +471,6 @@ set synmaxcol=120
 "" MY SHORCUTS
 nnoremap <silent> <leader>ll :Prettier<CR>
 vnoremap <silent> <leader>ll :Prettier<CR>
-
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 "" MY SETTINGS
@@ -529,9 +503,6 @@ let g:extradite_resize=0
 nnoremap <C-k> :Gfetch <CR> :Gstatus<CR> :Twiggy<CR> <C-W> h
 nnoremap <S-K> :Gstatus<CR>
 
-" automatic esc, really uncommon to type jj,jk
-" inoremap jj <ESC>
-" inoremap jk <Esc>
 
 " Faster scrolling
 nnoremap <C-e> 4<C-e>
@@ -540,19 +511,11 @@ nnoremap <C-y> 4<C-y>
 " Clear the search highlight
 nnoremap <silent> \ :silent nohlsearch<CR>
 
-" text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
-nnoremap <leader>tw gqip
-nnoremap <leader>nw :set nowrap<CR>
 
 " I use retab too much and it's hard to type
 nnoremap <leader>rt :retab!<CR>
 
-" Open current buffer in a new split
-""noremap <leader>s :vsplit<cr>
-""noremap <leader>i :split<cr>
 
-" close window
-noremap <leader>q :clo<CR>
 if has('clipboard')
     if has('unnamedplus')  " When possible use + register for copy-paste
         set clipboard=unnamed,unnamedplus
@@ -561,11 +524,6 @@ if has('clipboard')
     endif
 endif
 
-" For local replace
-nnoremap gr yiw{V}::s/<C-R>0//gc<left><left><left>
-
-" For global replace
-nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 
 set keymodel=startsel
@@ -709,6 +667,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " COC CONFIG ENDS /////////////////////////////////////////
 
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <silent> <expr> J ((pumvisible())?("\<C-n>"):("J"))
+inoremap <silent> <expr> K ((pumvisible())?("\<C-p>"):("K"))
 autocmd BufEnter *.png,*.jpg,*gif exec "! open -a Preview.app ".expand("%") | :bw

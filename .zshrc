@@ -11,14 +11,9 @@ alias andre='adb shell input keyevent KEYCODE_MENU && adb shell input keyevent E
 
 alias andme='adb shell input keyevent KEYCODE_MENU'
 
-
 alias runaloalo='adb shell am start -n com.codeventure.aloalo/com.codeventure.aloalo.MainActivity'
 
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-
-alias cmn="cmus-remote -n"
-alias cmp="cmus-remote -r"
-alias pp="cmus-remote -u"
 
 function killport(){
     kill -9 `lsof -i TCP:$1 | awk '/LISTEN/{print $2}'`
@@ -172,18 +167,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#source ~/.fonts/*.sh
+# source ~/.fonts/*.sh
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -198,3 +183,23 @@ alias resetbluetooth='bluetoothoff && bluetoothon'
 
 export LC_ALL=en_US.UTF-8
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

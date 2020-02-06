@@ -500,8 +500,7 @@ command! Commits Extradite
 
 let g:extradite_resize=0
 
-nnoremap <C-k> :Gfetch <CR> :Gstatus<CR> :Twiggy<CR> <C-W> h
-nnoremap <S-K> :Gstatus<CR>
+nnoremap <C-k> :Gstatus<CR> :Twiggy<CR> <C-W> h
 
 
 " Faster scrolling

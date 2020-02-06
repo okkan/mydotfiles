@@ -173,11 +173,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias bluetoothoff='sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTranspor'
-alias bluetoothon='sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTranspor'
 alias disableplaybutton='launchctl unload /System/Library/LaunchAgents/com.apple.rcd.plist'
 alias enableplaybutton='launchctl load /System/Library/LaunchAgents/com.apple.rcd.plist'
-alias resetbluetooth='bluetoothoff && bluetoothon'
+alias resetbluetooth='blueutil -p 0 && sleep 1 && blueutil -p 1'
+alias connectToMajor='blueutil --connect "MAJOR II BLUETOOTH"'
 
 
 

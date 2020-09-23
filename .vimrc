@@ -69,7 +69,7 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ryanoasis/vim-devicons'
 " Plugin 'ternjs/tern_for_vim', { 'for': 'javascript' }
-Plugin 'junegunn/fzf', { 'dir': '~/.vim/bundle/fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 "Plugin 'jiangmiao/auto-pairs'
 Plugin 'tmsvg/pear-tree'
@@ -80,6 +80,7 @@ Plugin 'styled-components/vim-styled-components'
 
 " Plugin 'dense-analysis/ale'
 Plugin 'sodapopcan/vim-twiggy'
+" Plugin 'idanarye/vim-merginal'
 Plugin 'RRethy/vim-illuminate'
 Plugin 'sjl/vitality.vim'
 Plugin 'mkitt/tabline.vim'
@@ -469,9 +470,10 @@ set synmaxcol=120
 
 
 "" MY SHORCUTS
-nnoremap <silent> <leader>ll :Prettier<CR>
-vnoremap <silent> <leader>ll :Prettier<CR>
-nnoremap <silent> <leader>ut :UndotreeToggle<CR>
+nnoremap <leader>ll :Prettier<CR>
+vnoremap <leader>ll :Prettier<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
+nnoremap <leader>cty :.+1,$tabdo :q<CR>
 
 "" MY SETTINGS
 let NERDTreeShowHidden=1
@@ -500,7 +502,7 @@ command! Commits Extradite
 
 let g:extradite_resize=0
 
-nnoremap <C-k> :Gstatus<CR> :Twiggy<CR> <C-W> h
+nnoremap <C-k> :Gstatus<CR> :Twiggy<CR>
 
 
 " Faster scrolling

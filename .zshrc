@@ -15,6 +15,7 @@ alias runaloalo='adb shell am start -n com.codeventure.aloalo/com.codeventure.al
 
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
+
 function killport(){
     kill -9 `lsof -i TCP:$1 | awk '/LISTEN/{print $2}'`
 }
@@ -169,9 +170,6 @@ source $ZSH/oh-my-zsh.sh
 
 # source ~/.fonts/*.sh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias disableplaybutton='launchctl unload /System/Library/LaunchAgents/com.apple.rcd.plist'
 alias enableplaybutton='launchctl load /System/Library/LaunchAgents/com.apple.rcd.plist'
